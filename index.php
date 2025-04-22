@@ -5,7 +5,7 @@
         <title>Bastelica Antoine</title>
         <link rel="stylesheet" href="style/style.css">
         <script src="/main.js" defer></script>
-        <link rel="shortcut icon" href="/Ressources/skipc.png">
+        <link rel="shortcut icon" href="Ressources/skipc.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -93,26 +93,34 @@
             </div>
             <div id="contact" class="div-pair">
                 <h1>Contact</h1>
-                <div>
-                    <a href="antoine.bastel@gmail.com">antoine.bastel@gmail.com</a>
-                </div>
-                    <!-- <form>
+                    <form method="post">
                         <div>
-                            <input type="text" name="name" placeholder="Nom, Prénom">
+                            <input type="text" name="name" placeholder="Nom, Prénom" required>
                         </div>
                         <div>
-                            <input type="text" name="objet" placeholder="Objet">
+                            <input type="text" name="objet" placeholder="Objet" required>
                         </div>
                         <div>
-                            <input type="text" name="email" placeholder="Email">
+                            <input type="email" name="email" placeholder="Email" required>
                         </div>
                         <div>
-                            <textarea id="message" name="message" placeholder="Message"></textarea>
+                            <textarea id="message" name="message" placeholder="Message" required></textarea>
                         </div>
                         <div>
-                            <button>Envoyer</button>
+                            <button type="submit">Envoyer</button>
                         </div>
-                    </form> -->
+                    </form>
+                    <?php 
+                        if (isset($_POST['message']))
+                        {
+                            $message = "Message envoyé depuis le site perso 
+                            De : ".htmlspecialchars($_POST['name'])."
+                            Email : ".htmlspecialchars($_POST['email'])."
+                            Message : ".htmlspecialchars($_POST['message']);
+                            mail("antoine.bastel@gmail.com",htmlspecialchars($_POST['objet']),$message,"From:contact@antoinebastelica.fr\r\nReply-to:".htmlspecialchars($_POST['email']));
+                        }
+                    ?>
+
             </div>
             <div id="formation" class="div-impair">
                 <h1>Formations</h1>
