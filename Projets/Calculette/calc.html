@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" >
+        <title>Calculatrice</title>
+        <link rel="stylesheet" href="/Projets/Calculette/calculette.css">
+        <script src="/Projets/Calculette/calc.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+        <form id="calc"> 
+            <!-- 17 touches  -->
+            <div class="affichage" id="affichage"></div>                            <!-- Position voulu : 1 2 3 4  -->
+            <div id="formule"></div>                                                <!-- Position voulu : 1 2 -->
+            <div id="resultat"></div>                                               <!-- Position voulu : 3 4 -->
+            <div class="touches op" id="ac" onclick="main('ac')">AC</div>           <!-- Position voulu : 5 6  -->
+            <div class="touches op" id="delete" onclick="main('del')">Delete</div>  <!-- Position voulu : 7 8  -->
+            <div class="touches" id="sept" onclick="main(7)">7</div>                <!-- Position voulu : 9 -->
+            <div class="touches" id="huit" onclick="main(8)">8</div>                <!-- Position voulu : 10 -->
+            <div class="touches" id="neuf" onclick="main(9)">9</div>                <!-- Position voulu : 11 -->
+            <div class="touches op" id="plus" onclick="main('+')">+</div>           <!-- Position voulu : 12 -->
+            <div class="touches" id="quatre" onclick="main(4)">4</div>              <!-- Position voulu : 13 -->
+            <div class="touches" id="cinq" onclick="main(5)">5</div>                <!-- Position voulu : 14 -->
+            <div class="touches" id="six" onclick="main(6)">6</div>                 <!-- Position voulu : 15 -->
+            <div class="touches op" id="moins" onclick="main('-')">-</div>          <!-- Position voulu : 16 -->
+            <div class="touches" id="un" onclick="main(1)">1</div>                  <!-- Position voulu : 17 --> 
+            <div class="touches" id="deux" onclick="main(2)">2</div>                <!-- Position voulu : 18 -->
+            <div class="touches" id="trois" onclick="main(3)">3</div>               <!-- Position voulu : 19 -->
+            <div class="touches op" id="fois" onclick="main('*')">x</div>           <!-- Position voulu : 20 -->
+            <div class="touches" id="virgule" onclick="main('.')">.</div>           <!-- Position voulu : 21 -->
+            <div class="touches" id="zero" onclick="main(0)">0</div>                <!-- Position voulu : 22 23-->
+            <div class="touches op" id="divise" onclick="main('/')">/</div>         <!-- Position voulu : 24 -->
+        </form>
+        </main>
+        <footer>
+            <!-- A vérifier -->
+            <!-- <p>© 2025 BASTELICA Antoine | Tous droits réservés</p> -->
+        </footer>
+    </body>
+</html>
