@@ -4,7 +4,7 @@
         <meta charset="utf-8" >
         <title>Bastelica Antoine</title>
         <link rel="stylesheet" href="style/style.css">
-        <script src="/main.js" defer></script>
+        <script src="main.js" defer></script>
         <link rel="shortcut icon" href="Ressources/skipc.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,14 +64,21 @@
                        
                     </div>
                     <div  class="projet2">
-                        <a href="/Projets/Calculette/calc.html"><img src="Ressources/Calc.png" alt="Site Web la Chabana"></a>
+                        <a href="/Projets/Calculette/calc.html"><img src="Ressources/Calc.png" alt="Site de calculette"></a>
                     </div>
-                    <div class="description3">   
+                    <!-- <div class="description3">   
                         <h2>La chabana</h2>
                         <p>Le même site en version classique.</p>
                     </div>
                     <div  class="projet3">
                         <a href="/Projets/V1 classique/index.html"><img src="Ressources/Site_Chabana.png" alt="Site Web la Chabana"></a>
+                    </div> -->
+                    <div class="description3">   
+                        <h2>To do list</h2>
+                        <p>Une to-do list en développement, pour s'entrainer et consolider Javascript</p>
+                    </div>
+                    <div  class="projet3">
+                        <a href="/Projets/ToDo/ToDo.html"><img src="Ressources/ToDo.png" alt="Site de todo-list"></a>
                     </div>
                 </div>
             </div>
@@ -93,7 +100,7 @@
             </div>
             <div id="contact" class="div-pair">
                 <h1>Contact</h1>
-                    <form method="post">
+                    <form action="#contact" method="post">
                         <div>
                             <input type="text" name="name" placeholder="Nom, Prénom" required>
                         </div>
@@ -118,6 +125,11 @@
                             Email : ".htmlspecialchars($_POST['email'])."
                             Message : ".htmlspecialchars($_POST['message']);
                             mail("antoine.bastel@gmail.com",htmlspecialchars($_POST['objet']),$message,"From:contact@antoinebastelica.fr\r\nReply-to:".htmlspecialchars($_POST['email']));
+                            echo "<p>Message envoyé !</p>";
+                            $_POST['name'] = '';
+                            $_POST['objet'] = '';
+                            $_POST['email'] = '';
+                            $_POST['message'] = '';
                         }
                     ?>
 
