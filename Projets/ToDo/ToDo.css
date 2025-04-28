@@ -66,3 +66,6 @@ header button{
     width: 40px;
     margin-left: 30px;
 }
+nav button{
+    width: 200px;
+}

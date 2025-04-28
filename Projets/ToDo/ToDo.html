@@ -15,8 +15,14 @@
                 <h1>To do : </h1>
                 <input type="text" placeholder="Nouvelle tache ?" onkeydown="search()"><button class="ok" onclick=newAction()>Ok</button>
                 <p id="compteur"></p>
+                <nav>
+                    <button onclick="selectTab(0)">Taches</button>
+                    <button onclick="selectTab(1)">Terminé</button>
+                </nav>
         </header>
         <main>
+            <div class="tasks" id="task0"></div>
+            <div class="tasks" id="done"></div>
         </main>
         <footer>
         </footer>
