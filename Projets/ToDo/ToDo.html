@@ -16,8 +16,8 @@
                 <input type="text" placeholder="Nouvelle tache ?" onkeydown="search()"><button class="ok" onclick=newAction()>Ok</button>
                 <p id="compteur"></p>
                 <nav>
-                    <button onclick="selectTab(0)">Taches</button>
-                    <button onclick="selectTab(1)">Terminé</button>
+                    <button id="taskButton" onclick="selectTab(0)">Taches</button>
+                    <button id="doneButton" onclick="selectTab(1)">Terminé</button>
                 </nav>
         </header>
         <main>

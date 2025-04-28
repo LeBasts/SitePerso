@@ -12,7 +12,7 @@ function newAction(){                                        // Fonction d'ajout
         document.getElementsByTagName("input")[0].value = "Vous devez écrire quelque chose";    // Message d'érreur
     } else {  
         while(verifId(nextAct) == false){
-            nextAct =nextAct+1;
+            nextAct = nextAct+1;
             verifId(nextAct);
         }
         divTache.setAttribute('id','action'+nextAct);           //Ajoute l'id action prochaine place
@@ -58,6 +58,7 @@ function check(numberTask){
             tasks.appendChild(document.getElementById('action'+numberTask), tasks); 
            // rename(tasks,"action"); 
         }
+        majCompt();
         // saveData();
     } 
 }
@@ -74,8 +75,8 @@ function showSaved(){
     main.innerHTML = localStorage.getItem("taches");
 }
 function majCompt(){
-    let nbTache = document.querySelectorAll("div.action").length;
-    document.getElementById("compteur").innerHTML = "Taches en cours : "+nbTache;
+    document.getElementById("taskButton").innerHTML = "Taches - "+tasks.children.length;
+    document.getElementById("doneButton").innerHTML = "Terminées - "+done.children.length;
 }
 function rename(div,newId){
     div = div.children;
@@ -97,20 +98,22 @@ function verifId(compt){
     let idValid;
     tasksLen = tasks.children;
     doneLen = done.children;
+    compt = 'action'+compt;
     for(i=0;i<tasksLen.length;i++){
-        if(compt==tasks.children[i].id){
+        if(compt==tasksLen[i].id){
             idValid = false;
         } else {
             idValid = true;
         }
     }
     for(i=0;i<doneLen.length;i++){
-        if(compt==done.children[i].id){
+        if(compt==doneLen[i].id){
             idValid = false;
         } else if(idValid!=false){
             idValid = true;
         }
     }
+    console.log(idValid);
     return(idValid);
 }
 //showSaved();
