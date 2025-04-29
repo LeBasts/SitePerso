@@ -13,15 +13,15 @@
     <body>
         <header>
                 <h1>To do : </h1>
-                <input type="text" placeholder="Nouvelle tache ?" onkeydown="search()"><button class="ok" onclick=newAction()>Ok</button>
+                <input type="text" placeholder="Nouvelle tache ?" onkeydown="search()"><button class="ok" onclick=newAction()>Ajouter Tache</button>
                 <p id="compteur"></p>
                 <nav>
-                    <button id="taskButton" onclick="selectTab(0)">Taches</button>
-                    <button id="doneButton" onclick="selectTab(1)">Terminé</button>
+                    <button id="taskButton" onclick="selectTab(0)"></button>
+                    <button id="doneButton" onclick="selectTab(1)"></button>
                 </nav>
         </header>
         <main>
-            <div class="tasks" id="task0"></div>
+            <div class="tasks" id="tasks"></div>
             <div class="tasks" id="done"></div>
         </main>
         <footer>
