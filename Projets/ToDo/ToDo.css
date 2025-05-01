@@ -21,7 +21,7 @@ body{
     border-radius: 8px;
 }
 .action p{
-    grid-column: 1/7;
+    grid-column: 1/6;
     padding-left: 20px;
 }
 header{
@@ -38,17 +38,24 @@ h1{
 main button,main .ok{
     background:none;
     margin: auto;
-    border-style: none;
-    height: 30px;
     font: bolder 24px arial,sans-serif;
+    border-radius: 5px;
+    border-color: var(--main-color);
+    padding: 0 20px;
 }
 .ok{
+height: 30px;
+}
+main button:hover{
+    border-color: var(--second-color);
     color: var(--second-color);
+    background-color: var(--main-color);
 }
 main input{
-    padding: 30px;
+    color: var(--second-color);
     width: 60%;
     accent-color: green;
+    margin-right: 10px;
 }
 .x{
     color: red;

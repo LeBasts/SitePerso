@@ -2,6 +2,7 @@ const main = document.querySelector('main');
 const tasks = document.getElementById('tasks');                    // Recupère le compartiment tasks
 const done = document.getElementById('done');                    // Recupère le compartiment done
 const placeDiv = tasks.children;
+let editing = false;
 function newAction(){                                        // Fonction d'ajout de tache
     let compt = document.querySelectorAll("div.action").length; //Récupère le nombre de tache
     let nextAct = compt;                              // Défini la prochaine place libre
@@ -19,7 +20,7 @@ function newAction(){                                        // Fonction d'ajout
         divTache.setAttribute('id','action'+nextAct);           //Ajoute l'id action prochaine place
         divTache.setAttribute('class','action');                //Ajoute la classe action
         //Ajoute l'interieur de la div
-        divTache.innerHTML = '<p>'+task+'</p><input type="checkbox" class="ok" id="ok'+nextAct+'" onclick=check('+nextAct+',action'+nextAct+')><button class="x" onclick=del('+nextAct+')>X</button>';
+        divTache.innerHTML = '<p>'+task+'</p><input type="checkbox" class="ok" id="ok'+nextAct+'" onclick=check('+nextAct+',action'+nextAct+')><button class="modifier" onclick=addEditInput('+nextAct+')>Modifier</button><button class="x" onclick=del('+nextAct+')>X</button>';
         //let previousTask = document.querySelector('tasks');      //
         tasks.appendChild(divTache, tasks.nextSibling);             // Crée la div dans tasks
         document.getElementsByTagName("input")[0].value="";       // Vide le champ input
@@ -47,7 +48,7 @@ function check(numberTask){
     // let checkbox1 = document.querySelector('main div #action'+numberTask+" input");
     // let checkbox2 = document.querySelector('main div #done'+numberTask+" input");
     checkbox.addEventListener('change', handleChange);
-    function handleChange(e) {  
+    function handleChange() {  
         if (checkbox.checked){
             document.getElementById('action'+numberTask).style = "background-color : green;";    
             done.appendChild(document.getElementById('action'+numberTask), done);
@@ -60,9 +61,11 @@ function check(numberTask){
     } 
 }
 function search(){
-    if (event.key === 'Enter'){
+    if (event.key === 'Enter' && document.getElementsByTagName("input")[0].value!=""){
         newAction();  
-    }
+    } else if (event.key === 'Enter' && document.getElementById("editInput").value!=""){
+        document.getElementById("edit").click();
+    } 
 }
 function saveData(){
     localStorage.setItem("taches", tasks.innerHTML);
@@ -80,15 +83,6 @@ function majCompt(){
         document.getElementById("doneButton").innerHTML = "Terminées - "+done.children.length;
     }
 }
-// function rename(div,newId){
-    //     div = div.children;
-    //     for(i=0; i<div.length;i++){
-        //         div[i].id = newId+i;
-        //         div[i].querySelector('input').id ='ok'+i;
-        //         div[i].querySelector('input').setAttribute('onclick','onclick=check('+i+')');
-        //         div[i].querySelector('button').setAttribute('onclick','onclick=del('+i+')');
-        //     }
-        // }
         function selectTab(onglet){
             let content = document.querySelectorAll('.tasks');
             for(i=0;i<content.length;i++){
@@ -117,6 +111,33 @@ function majCompt(){
             }
             //console.log(idValid);
             return(idValid);
+        }
+        function addEditInput(numberTask){
+            console.log("Début input "+editing);
+            if(main.querySelector('input')!=null && editing == false){
+                editing = true;
+                //if ()
+                // console.log(document.querySelectorAll('.action'+numberTask+' p').innerHTML);
+                // console.log(document.getElementById("action"+numberTask).innerHTML);
+                let divToEdit = document.getElementById("action"+numberTask);
+                let tagToEdit = divToEdit.children[0];
+                let texToEdit = divToEdit.children[0].innerHTML;
+                tagToEdit.innerHTML = '<input type="text" id="editInput"value="'+texToEdit+'" onkeydown="search()"><button id="edit" onclick="editValidation('+numberTask+')">Ok</button>';
+                divToEdit.querySelector('input').focus();
+                divToEdit.querySelector('input').setSelectionRange(texToEdit.length,texToEdit.length);
+            }
+            console.log("Fin boucle input "+editing);
+            //return editing;
+        }
+        function editValidation(numberTask){
+            console.log("Début edit "+editing);
+            let divToEdit = document.getElementById("action"+numberTask);
+            let newText = divToEdit.querySelector('input').value;
+            if (newText!=""){  //newText!=texToEdit && 
+                divToEdit.querySelector('p').innerText = newText;
+                editing = false;
+            }
+            console.log("Fin edit "+editing);
         }
         function deleteSave(){
             localStorage.clear();
