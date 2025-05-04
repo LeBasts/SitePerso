@@ -1,6 +1,6 @@
 window.addEventListener('resize', checkSize);
 function checkSize(){
-    if(document.documentElement.clientWidth>995){
+    if(document.documentElement.clientWidth>1072){
         document.querySelector("nav").style.display = "inline-block";
     } else {
         document.querySelector("nav").style.display = "none";

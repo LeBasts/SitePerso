@@ -17,10 +17,9 @@ var(--third-color) beige jaune  Noir
 }
 header{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     background-color: var(--main-color);
-    justify-content: space-between;
-    align-items: center;
+    place-items: center;
 }   
 header a{
     font-size: 26px;
@@ -30,18 +29,22 @@ header a{
     border-radius: 5px;
     transition: background-color 0.2s, color 0.5s, font-weight 1s;
 }
-header a:hover{
+nav a:hover{
     background-color: var(--second-color);
     color: var(--main-color);
     font-weight: 600;
 }
 #lien-navigation{
-    margin-right: 50px;
+    grid-column: 2/5;
+}
+#nav-linkedin img{
+    height: 70px;
 }
 #photo img{
     height: 200px;
+    width: 180px;
     border-radius: 50%;
-    margin: 30px 250px;
+    margin: 30px 0px;
 }
 h1{
     margin-bottom: 5%;
@@ -66,7 +69,6 @@ h2{
 }
 #portefolio img{
     width: 100%;
-    height: 200px;
     transition: transform 0.5s;
 }
 #portefolio img:hover{
@@ -121,11 +123,11 @@ footer p{
     height: 40px;
     margin: 0;
 }
-ul{
-    text-align: center;
+#formation ul{
     list-style: none;
+    text-align: center;
 }
-li{
+#formation li{
     margin-top: 5%;
 }
 li a{
@@ -146,6 +148,18 @@ li a:hover{
 .description3{
     grid-column: 3/4;
     grid-row: 1/2;   
+}
+.description4{
+    grid-column: 1/2;
+    grid-row: 3/4;   
+}
+.description5{
+    grid-column: 2/3;
+    grid-row: 3/4;   
+}
+.description6{
+    grid-column: 3/4;
+    grid-row: 3/4;   
 }
 .mesComp{
     display: grid;
@@ -216,7 +230,15 @@ li a:hover{
     margin-top: 50px;
     width: 50px;;
 }
-@media screen and (max-width: 996px){
+@media screen and (max-width: 1188px){
+    #photo img{
+        margin: 30px 10%;
+    }
+    nav a{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 1072px){
     .bar{
         background-color: var(--main-color);
         height: 10%;
@@ -251,9 +273,9 @@ li a:hover{
         text-align: center;
         border-radius: 10px;
     }
-    #photo img{
-        /* margin: 30px 100px; */
-        margin: 30px 50%;
+    nav a{
+        font-size: 20px;
+        margin: 0 20px;
     }
     .mesComp{
         display: block;
@@ -264,9 +286,6 @@ li a:hover{
     *{
         font-size: 30px;
     }
-    #portefolio img{
-        height: 350px;
-    }
     .grid-projet{
         display: block;
     }
@@ -274,4 +293,3 @@ li a:hover{
         width: 100%;
     }
 }
-
