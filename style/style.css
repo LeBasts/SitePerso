@@ -74,6 +74,12 @@ h2{
 #portefolio img:hover{
     transform: scale(1.1);
 }
+form div p{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding-top: 5px;
+}
 form div{
     padding: 30px;
     text-align: center;
@@ -124,6 +130,7 @@ footer p{
     margin: 0;
 }
 #formation ul{
+    padding: 0;
     list-style: none;
     text-align: center;
 }

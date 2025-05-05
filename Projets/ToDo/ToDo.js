@@ -89,6 +89,17 @@ function majCompt(){
                 content[i].style.display = 'none';
             }
             content[onglet].style.display = 'block';
+            if (onglet == 0 ){
+                document.getElementById('doneButton').style.color = '#ecc19c';
+                document.getElementById('doneButton').style.backgroundColor = '#434141';
+                document.getElementById('taskButton').style.color = '#434141';
+                document.getElementById('taskButton').style.backgroundColor = '#ecc19c';
+            } else if (onglet == 1){
+                document.getElementById('doneButton').style.color = '#434141';
+                document.getElementById('doneButton').style.backgroundColor = '#ecc19c';
+                document.getElementById('taskButton').style.color = '#ecc19c';
+                document.getElementById('taskButton').style.backgroundColor = '#434141';
+            }
         }
         function verifId(compt){
             let idValid;
