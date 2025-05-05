@@ -1,29 +1,32 @@
 <div id="contact" class="div-pair">
     <h1>Contact</h1>
         <?php 
-            $name = htmlspecialchars($_POST['name']);
-            $objet = htmlspecialchars($_POST['objet']);
-            $email = htmlspecialchars($_POST['email']);
-            $message = htmlspecialchars($_POST['message']);
-            $champs = ["nom" => $name,"objet" => $objet,"message" => $message, "mail" => $email];
-            $errormessage = '';
-            $errornom ='';
-            $errormail ='';
-            $errorobjet ='';
-            $state = '';
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $validMail = true;
-            } else {
-                $validMail = false;
-                $errormail = "Mail invalide";
-            }
-            foreach($champs as $nom => $champ){
-                if(empty($champ)){
-                    ${"valid$nom"} = false;
-                    ${"error$nom"} = "Champ ".$nom." vide";
+            if(array_key_exists('send', $_POST)) {
+                @$name = htmlspecialchars($_POST['name']);
+                @$objet = htmlspecialchars($_POST['objet']);
+                @$email = htmlspecialchars($_POST['email']);
+                @$message = htmlspecialchars($_POST['message']);
+                $champs = ["nom" => $name,"objet" => $objet,"message" => $message, "mail" => $email];
+                $errormessage = '';
+                $errornom ='';
+                $errormail ='';
+                $errorobjet ='';
+                $state = '';
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $validMail = true;
                 } else {
-                    ${"valid$nom"} = true;
+                    $validMail = false;
+                    $errormail = "Mail invalide";
                 }
+                foreach($champs as $nom => $champ){
+                    if(empty($champ)){
+                        ${"valid$nom"} = false;
+                        ${"error$nom"} = "Champ ".$nom." vide";
+                    } else {
+                        ${"valid$nom"} = true;
+                    }
+                }
+
             }
             if (isset($message) && $validMail && $validnom && $validobjet && $validmessage)
             {   
@@ -37,24 +40,24 @@
         ?>
         <form action="#contact" method="post">
             <div>
-                <input type="text" name="name" placeholder="Nom, Prénom" value="<?= $name?>">
-                <p><?= $errornom?></p>
+                <input type="text" name="name" placeholder="Nom, Prénom" value="<?= @$name?>">
+                <p><?= @$errornom?></p>
             </div>
             <div>
-                <input type="text" name="objet" placeholder="Objet" value="<?= $objet?>">
-                <p><?= $errorobjet?></p>
+                <input type="text" name="objet" placeholder="Objet" value="<?= @$objet?>">
+                <p><?= @$errorobjet?></p>
             </div>
             <div>
-                <input type="text" name="email" placeholder="Email" value="<?= $email?>">
-                <p><?= $errormail?></p>
+                <input type="text" name="email" placeholder="Email" value="<?= @$email?>">
+                <p><?= @$errormail?></p>
             </div>
             <div>
                 <textarea id="message" name="message" placeholder="Message"></textarea>
-                <p><?= $errormessage?></p>
-                <p><?= $state?></p>
+                <p><?= @$errormessage?></p>
+                <p><?= @$state?></p>
             </div>
             <div>
-                <button type="submit">Envoyer</button>
+                <button type="submit" name="send">Envoyer</button>
             </div>
         </form>
         <?php
