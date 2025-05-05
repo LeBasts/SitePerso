@@ -92,6 +92,7 @@ form input, form textarea{
 form textarea{
     height: 150px;
 }
+
 button{
     border: none;
     text-decoration: none;
@@ -120,6 +121,13 @@ em{
     padding: 5% 10%;
     background-color: var(--second-color);
     color: var(--main-color);
+}
+p.invalid{
+    color: rgb(253, 143, 143);
+}
+input.invalid, textarea.invalid{
+    border: 2px solid red;
+    color: rgb(70, 15, 24);
 }
 footer p{
     background-color: var(--main-color);

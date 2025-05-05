@@ -6,17 +6,17 @@
                 @$objet = htmlspecialchars($_POST['objet']);
                 @$email = htmlspecialchars($_POST['email']);
                 @$message = htmlspecialchars($_POST['message']);
-                $champs = ["nom" => $name,"objet" => $objet,"message" => $message, "mail" => $email];
+                $champs = ["nom" => $name,"objet" => $objet,"message" => $message, "email" => $email];
                 $errormessage = '';
                 $errornom ='';
-                $errormail ='';
+                $erroremail ='';
                 $errorobjet ='';
                 $state = '';
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $validMail = true;
                 } else {
                     $validMail = false;
-                    $errormail = "Mail invalide";
+                    $erroremail = "Mail invalide";
                 }
                 foreach($champs as $nom => $champ){
                     if(empty($champ)){
@@ -49,7 +49,7 @@
             </div>
             <div>
                 <input type="text" name="email" placeholder="Email" value="<?= @$email?>">
-                <p><?= @$errormail?></p>
+                <p><?= @$erroremail?></p>
             </div>
             <div>
                 <textarea id="message" name="message" placeholder="Message"></textarea>

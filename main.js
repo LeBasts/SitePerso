@@ -4,7 +4,6 @@ function checkSize(){
         document.querySelector("nav").style.display = "inline-block";
     } else {
         document.querySelector("nav").style.display = "none";
-
     }
 }
 checkSize();
@@ -15,17 +14,24 @@ function deroulerMenu(){
     } else{
         document.querySelector("nav").style.display = "none";
     }
-    console.log(window.innerWidth)
-    
+    console.log(window.innerWidth);
 }
-// progressBar();
-// function progressBar(){
-//     console.log("lalala : "+document.getElementById("frontHtml").style.width)
-//     let width =0;
-//     while(width<=10){
-//         clearInterval
-//         console.log(width);
-//         width+=1;
-// lala
-//     }
-// }
+function invalidStyle(){
+    let divForm = document.querySelector('form');
+    let divLen = divForm.children.length;
+    for(i=0;i<divLen-1;i++){
+        let divChild = divForm.children[i];
+        let input = divChild.querySelector('input');
+        let p = divChild.querySelector('p')
+        if(input){
+            input = divChild.querySelector('input');
+        } else {
+            input = divChild.querySelector('textarea');
+        }
+        if (divChild.innerText.includes("Champ") || divChild.innerText.includes("Mail")){
+            input.setAttribute("class","invalid");
+            p.setAttribute("class","invalid");
+        }
+    }
+}
+invalidStyle();
