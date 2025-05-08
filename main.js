@@ -6,7 +6,6 @@ function checkSize(){
         document.querySelector("nav").style.display = "none";
     }
 }
-checkSize();
 function deroulerMenu(){
     let state = document.querySelector("nav").style.display;
     if(state === "none"){
@@ -34,4 +33,32 @@ function invalidStyle(){
         }
     }
 }
+const techList = document.getElementById('tech');
+let techValue = techList.value;
+const divTechChild = document.querySelector('.grid-projet').children;
+console.log(divTechChild.length);
+
+techList.addEventListener('change',showTechno);
+
+function showTechno(){
+    techValue = techList.value;
+    if(techValue != 'all'){
+        let attrib = divTechChild[1].getAttribute('class');
+        console.log(attrib);
+        for(i=0;i<divTechChild.length;i++){
+            divTechChild[i].style.display = 'none';
+            
+            if(divTechChild[i].classList.contains(techValue)){
+                console.log("ninja : "+techValue);
+                divTechChild[i].style.display = 'flex';
+            }
+        }
+    } else {
+        for(i=0;i<divTechChild.length;i++){
+            divTechChild[i].style.display = 'flex';
+        }
+    }
+}
+showTechno();
+checkSize();
 invalidStyle();
